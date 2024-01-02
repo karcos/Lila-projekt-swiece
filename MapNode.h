@@ -8,7 +8,7 @@ class MapNode
 {
 private:
 	string key_el;
-	List values_el;
+	List* values_el;
 	MapNode* next_el;
 public:
 	MapNode();
@@ -19,7 +19,7 @@ public:
 	void set_key(const string key);
 	MapNode* next() const;
 	void set_next(MapNode* new_next);
-	List values() const;
+	List* values() const;
 	int size() const;
 	void show() const;
 };

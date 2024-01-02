@@ -1,10 +1,9 @@
-﻿#include "file_handle.h"
-
+﻿#include "Menu.h"
 using namespace std;
 
 int main() {
-    Map test = read("intc_us_d.csv");
-    test.show();
+    Menu interface_handler;
+    interface_handler.interface_handle();
   
     return 0;
 }

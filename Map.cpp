@@ -77,6 +77,63 @@ void Map::add_row(List values)
 	
 }
 
+void Map::copy(const Map new_map)
+{
+	this->head = new_map.begin();
+	this->map_size = new_map.size();
+}
+
+List* Map::get_row(const int row) const
+{
+	List* result_row = new List;
+	MapNode* current_map_node = this->head;
+	ListNode* current_list_node;
+	/*int i;
+
+	while (current_map_node->next() != nullptr)
+	{
+		current_list_node = current_map_node->values().begin();
+		i = 0;
+
+		while (i != row)
+		{
+			current_list_node = current_list_node->next();
+			i++;
+		}
+		
+		result_row.add(current_list_node->value());
+
+		current_map_node = current_map_node->next();
+	}*/
+
+	for (int i = 0; i < this->map_size; i++)
+	{
+		if (row < this->head[i].values()->size() - 1)
+		{
+			result_row->add(this->head[i].values()->get(row));
+		}
+	}
+	if (result_row->size() == 0)
+	{
+		result_row->add("null");
+	}
+	return result_row;
+	
+}
+
+List* Map::get_by_key(const string key) const
+{
+	MapNode* current = this->begin();
+
+	while (current->next() != nullptr)
+	{
+		if (current->key() == key)
+		{
+			return current->values();
+		}
+	}
+}
+
 void Map::show()
 {
 	MapNode* current = this->head;
@@ -91,7 +148,7 @@ void Map::show()
 	}
 }
 
-int Map::size()
+int Map::size() const
 {
 	return this->map_size;
 }

@@ -23,19 +23,19 @@ void MapNode::set_key(const string key)
 
 int MapNode::size() const
 {
-	return this->values_el.size();
+	return this->values_el->size();
 }
 
 void MapNode::show() const
 {
 	cout << '{' << this->key_el << " ,";
-	this->values_el.show();
+	this->values_el->show();
 	cout << '}';
 }
 
 void MapNode::add(const string value)
 {
-	this->values_el.add(value);
+	this->values_el->add(value);
 }
 
 MapNode* MapNode::next() const
@@ -48,7 +48,7 @@ void MapNode::set_next(MapNode* new_next)
 	this->next_el = new_next;
 }
 
-List MapNode::values() const
+List* MapNode::values() const
 {
 	return this->values_el;
 }
